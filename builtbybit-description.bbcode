@@ -1,0 +1,143 @@
+[CENTER]
+[IMG]https://i.imgur.com/PLACEHOLDER_BANNER.png[/IMG]
+
+[SIZE=6][B]HytaleMenus[/B][/SIZE]
+[SIZE=4][I]Create fully customizable GUI menus for your Hytale server[/I][/SIZE]
+
+[HR][/HR]
+[/CENTER]
+
+[SIZE=5][B]Overview[/B][/SIZE]
+
+HytaleMenus is a lightweight, JSON-configurable GUI menu system that allows server owners to create beautiful, interactive menus with ease. Build nested sub-menus, text pages, and connect them to commands - all without writing a single line of code.
+
+[HR][/HR]
+
+[SIZE=5][B]Features[/B][/SIZE]
+
+[LIST]
+[*][B]Easy JSON Configuration[/B] - No coding required, just edit a simple JSON file
+[*][B]Nested Sub-Menus[/B] - Create unlimited menu hierarchies
+[*][B]Text Pages[/B] - Display rules, guides, welcome messages with back navigation
+[*][B]Permission System[/B] - Hide or deny items based on permissions
+[*][B]Placeholders[/B] - Use {player} or %player% for dynamic content
+[*][B]Built-in Actions[/B] - Close menus, open sub-menus, run commands, send messages
+[*][B]Developer API[/B] - Register custom actions from your own plugins
+[*][B]Hot Reload[/B] - Reload configuration without restarting the server
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][B]Built-in Actions[/B][/SIZE]
+
+[CODE]
+close              - Close the menu
+menu:menuname      - Open another menu
+page:name          - Open a text page
+page:name:menu     - Open a text page with back button to menu
+message:text       - Send a message to the player
+command:cmd args   - Run a command as the player
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][B]Commands[/B][/SIZE]
+
+[CODE]
+/menu              - Open the default menu
+/menu <name>       - Open a specific menu
+/menuadmin reload  - Reload configuration
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][B]Permissions[/B][/SIZE]
+
+[CODE]
+hytalemenus.use           - Access to /menu command
+hytalemenus.admin         - Access to /menuadmin command
+hytalemenus.menu.<name>   - Access to specific menus
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][B]Example Configuration[/B][/SIZE]
+
+[CODE=JSON]
+{
+  "defaultMenu": "main",
+  "menus": {
+    "main": {
+      "title": "Server Menu",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "COMPASS",
+          "name": "Teleportation",
+          "lore": ["Homes, Warps & More"],
+          "action": "menu:teleport"
+        },
+        "4": {
+          "icon": "BOOK",
+          "name": "Server Rules",
+          "lore": ["Read the rules"],
+          "action": "page:rules:main"
+        },
+        "8": {
+          "icon": "COMMAND_BLOCK",
+          "name": "Admin Panel",
+          "action": "menu:admin",
+          "permission": "hytalemenus.admin",
+          "noPermission": "hide"
+        }
+      }
+    }
+  },
+  "pages": {
+    "rules": {
+      "title": "Server Rules",
+      "lines": [
+        "Welcome {player}!",
+        "",
+        "1. Be respectful",
+        "2. No griefing"
+      ]
+    }
+  }
+}
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][B]Developer API[/B][/SIZE]
+
+Other plugins can register custom actions:
+
+[CODE=Java]
+HytaleMenusAPI api = HytaleMenusAPI.getInstance();
+
+api.registerAction("myplugin:openui", (player, playerRef, ref, store, args) -> {
+    // Your custom action logic
+    MyCustomPage page = new MyCustomPage(playerRef);
+    player.getPageManager().openCustomPage(ref, store, page);
+});
+
+// Use in config: "action": "myplugin:openui"
+[/CODE]
+
+[HR][/HR]
+
+[SIZE=5][B]Support[/B][/SIZE]
+
+Need help? Found a bug? Have a suggestion?
+
+[LIST]
+[*]Open an issue on [URL='https://github.com/joogiebear/HytaleMenus']GitHub[/URL]
+[*]Join our Discord (coming soon)
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=3][I]Made with care by joogiebear[/I][/SIZE]
+[/CENTER]

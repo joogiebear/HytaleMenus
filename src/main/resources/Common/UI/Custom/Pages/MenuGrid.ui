@@ -1,0 +1,142 @@
+@ButtonStyle = TextButtonStyle(
+  Default: (Background: #3a7bd5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@CloseButtonStyle = TextButtonStyle(
+  Default: (Background: #2b3542, LabelStyle: (FontSize: 13, TextColor: #96a9be, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #3b4552, LabelStyle: (FontSize: 13, TextColor: #b6c9de, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #1b2532, LabelStyle: (FontSize: 13, TextColor: #96a9be, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+  Anchor: (Width: 420, Height: 400);
+  Background: #141c26(0.98);
+  LayoutMode: Top;
+  Padding: (Full: 20);
+
+  Label #Title {
+    Text: "Menu";
+    Anchor: (Height: 45);
+    Style: (
+      FontSize: 24,
+      TextColor: #ffffff,
+      HorizontalAlignment: Center,
+      RenderBold: true
+    );
+  }
+
+  Group {
+    Anchor: (Height: 1);
+    Background: #2b3542;
+  }
+
+  Group { Anchor: (Height: 16); }
+
+  Group #Row0 {
+    LayoutMode: Center;
+    Anchor: (Height: 50);
+
+    TextButton #Slot0 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot1 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot2 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+  }
+
+  Group { Anchor: (Height: 8); }
+
+  Group #Row1 {
+    LayoutMode: Center;
+    Anchor: (Height: 50);
+
+    TextButton #Slot3 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot4 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot5 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+  }
+
+  Group { Anchor: (Height: 8); }
+
+  Group #Row2 {
+    LayoutMode: Center;
+    Anchor: (Height: 50);
+
+    TextButton #Slot6 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot7 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+
+    Group { Anchor: (Width: 10); }
+
+    TextButton #Slot8 {
+      Text: "";
+      Anchor: (Width: 110, Height: 42);
+      Style: @ButtonStyle;
+    }
+  }
+
+  Group { FlexWeight: 1; }
+
+  Group {
+    LayoutMode: Center;
+    Anchor: (Height: 44);
+
+    TextButton #CloseButton {
+      Text: "CLOSE";
+      Anchor: (Width: 110, Height: 38);
+      Style: @CloseButtonStyle;
+    }
+  }
+
+  Group { Anchor: (Height: 6); }
+
+  Label {
+    Text: "Press ESC to close";
+    Anchor: (Height: 16);
+    Style: (FontSize: 11, TextColor: #4a5568, HorizontalAlignment: Center);
+  }
+}

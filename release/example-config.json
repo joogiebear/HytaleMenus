@@ -1,0 +1,429 @@
+{
+  "_comment": [
+    "=== HytaleMenus Configuration ===",
+    "",
+    "SLOT LAYOUT (3x3 grid, slots 0-8):",
+    "  [0] [1] [2]",
+    "  [3] [4] [5]",
+    "  [6] [7] [8]",
+    "",
+    "ACTIONS - Format: 'actionname' or 'actionname:arg1:arg2'",
+    "",
+    "Built-in actions:",
+    "  close              - Close the menu",
+    "  menu:menuname      - Open another menu",
+    "  page:name          - Open a text page (closes on back)",
+    "  page:name:menu     - Open a text page (back returns to menu)",
+    "  message:text       - Send a message to the player",
+    "  command:cmd args   - Run a command as the player",
+    "",
+    "PERMISSIONS:",
+    "  permission: 'node'     - Required permission to see/use item",
+    "  noPermission: 'deny'   - Show error when clicked without permission",
+    "  noPermission: 'hide'   - Hide item completely without permission",
+    "",
+    "PLACEHOLDERS:",
+    "  {player} or %player% - Player's name"
+  ],
+  "defaultMenu": "main",
+  "noPermissionMessage": "You don't have permission to access this.",
+  "menus": {
+    "main": {
+      "title": "Server Menu",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "COMPASS",
+          "name": "Teleportation",
+          "lore": ["Homes, Warps, Spawn & More"],
+          "action": "menu:teleport"
+        },
+        "1": {
+          "icon": "GOLD_INGOT",
+          "name": "Economy",
+          "lore": ["Balance, Shop & Trading"],
+          "action": "menu:economy"
+        },
+        "2": {
+          "icon": "DIAMOND_SWORD",
+          "name": "Progression",
+          "lore": ["Jobs, Levels & Kits"],
+          "action": "menu:progression"
+        },
+        "3": {
+          "icon": "CLOCK",
+          "name": "Daily Rewards",
+          "lore": ["Claim your daily rewards!"],
+          "action": "command:daily"
+        },
+        "4": {
+          "icon": "CHEST",
+          "name": "Personal Vaults",
+          "lore": ["Access your storage"],
+          "action": "command:vault"
+        },
+        "5": {
+          "icon": "ENDER_PEARL",
+          "name": "Random Teleport",
+          "lore": ["Teleport to a random location"],
+          "action": "command:rtp"
+        },
+        "6": {
+          "icon": "PAPER",
+          "name": "Messages",
+          "lore": ["Private messaging options"],
+          "action": "menu:messages"
+        },
+        "7": {
+          "icon": "BOOK",
+          "name": "Server Info",
+          "lore": ["Rules, Discord & Help"],
+          "action": "menu:info"
+        },
+        "8": {
+          "icon": "COMMAND_BLOCK",
+          "name": "Admin Panel",
+          "lore": ["Server administration"],
+          "action": "menu:admin",
+          "permission": "hytalemenus.admin",
+          "noPermission": "hide"
+        }
+      }
+    },
+
+    "teleport": {
+      "title": "Teleportation",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "RED_BED",
+          "name": "Spawn",
+          "lore": ["Return to spawn point"],
+          "action": "command:spawn"
+        },
+        "1": {
+          "icon": "CAMPFIRE",
+          "name": "Home",
+          "lore": ["Teleport to your home"],
+          "action": "command:home"
+        },
+        "2": {
+          "icon": "END_PORTAL_FRAME",
+          "name": "Warps",
+          "lore": ["View available warps"],
+          "action": "command:warp"
+        },
+        "3": {
+          "icon": "PLAYER_HEAD",
+          "name": "TPA Request",
+          "lore": ["Request to teleport to a player"],
+          "action": "message:Use /tpa <player> to request teleport"
+        },
+        "4": {
+          "icon": "ENDER_PEARL",
+          "name": "Random Teleport",
+          "lore": ["Teleport to a random location"],
+          "action": "command:rtp"
+        },
+        "5": {
+          "icon": "COMPASS",
+          "name": "Back",
+          "lore": ["Return to previous location"],
+          "action": "command:back"
+        },
+        "6": {
+          "icon": "OAK_SIGN",
+          "name": "Set Home",
+          "lore": ["Set your home location"],
+          "action": "command:sethome"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        },
+        "8": {
+          "icon": "FILLED_MAP",
+          "name": "My Homes",
+          "lore": ["View all your homes"],
+          "action": "command:homes"
+        }
+      }
+    },
+
+    "economy": {
+      "title": "Economy",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "GOLD_INGOT",
+          "name": "Balance",
+          "lore": ["Check your balance"],
+          "action": "command:bal"
+        },
+        "1": {
+          "icon": "EMERALD",
+          "name": "Shop",
+          "lore": ["Browse the server shop"],
+          "action": "command:shop"
+        },
+        "2": {
+          "icon": "CHEST",
+          "name": "Auction House",
+          "lore": ["Buy and sell with players"],
+          "action": "command:ah"
+        },
+        "3": {
+          "icon": "PAPER",
+          "name": "Pay Player",
+          "lore": ["Send money to another player", "Use /pay <player> <amount>"],
+          "action": "message:Use /pay <player> <amount> to send money"
+        },
+        "4": {
+          "icon": "DIAMOND",
+          "name": "Balance Top",
+          "lore": ["View richest players"],
+          "action": "command:baltop"
+        },
+        "5": {
+          "icon": "NETHER_STAR",
+          "name": "Store",
+          "lore": ["Visit the donation store"],
+          "action": "command:store"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        }
+      }
+    },
+
+    "progression": {
+      "title": "Progression",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "IRON_PICKAXE",
+          "name": "Jobs",
+          "lore": ["View and join jobs"],
+          "action": "command:jobs"
+        },
+        "1": {
+          "icon": "EXPERIENCE_BOTTLE",
+          "name": "Level",
+          "lore": ["Check your level and XP"],
+          "action": "command:level"
+        },
+        "2": {
+          "icon": "CHEST",
+          "name": "Kits",
+          "lore": ["View available kits"],
+          "action": "command:kits"
+        },
+        "3": {
+          "icon": "NAME_TAG",
+          "name": "Ranks",
+          "lore": ["View rank information"],
+          "action": "command:rank"
+        },
+        "4": {
+          "icon": "CLOCK",
+          "name": "Daily Rewards",
+          "lore": ["Claim daily rewards"],
+          "action": "command:daily"
+        },
+        "5": {
+          "icon": "NETHER_STAR",
+          "name": "Rewards",
+          "lore": ["View all rewards"],
+          "action": "command:rewards"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        }
+      }
+    },
+
+    "messages": {
+      "title": "Messaging",
+      "rows": 3,
+      "items": {
+        "1": {
+          "icon": "PAPER",
+          "name": "Send Message",
+          "lore": ["Use /msg <player> <message>"],
+          "action": "message:Use /msg <player> <message> to send a private message"
+        },
+        "3": {
+          "icon": "BARRIER",
+          "name": "Ignore Player",
+          "lore": ["Block messages from a player", "Use /ignore <player>"],
+          "action": "message:Use /ignore <player> to block their messages"
+        },
+        "4": {
+          "icon": "LEVER",
+          "name": "Toggle Messages",
+          "lore": ["Enable/disable private messages"],
+          "action": "command:msgtoggle"
+        },
+        "5": {
+          "icon": "BRUSH",
+          "name": "Chat Colors",
+          "lore": ["Customize your chat color"],
+          "action": "command:color"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        }
+      }
+    },
+
+    "info": {
+      "title": "Server Info",
+      "rows": 3,
+      "items": {
+        "1": {
+          "icon": "BOOK",
+          "name": "Server Rules",
+          "lore": ["Read the server rules"],
+          "action": "page:rules:info"
+        },
+        "3": {
+          "icon": "HEART_OF_THE_SEA",
+          "name": "Discord",
+          "lore": ["Join our Discord server"],
+          "action": "command:discord"
+        },
+        "4": {
+          "icon": "PAPER",
+          "name": "Welcome",
+          "lore": ["Server information"],
+          "action": "page:welcome:info"
+        },
+        "5": {
+          "icon": "TRIPWIRE_HOOK",
+          "name": "Keys",
+          "lore": ["View your crate keys"],
+          "action": "command:keys"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        }
+      }
+    },
+
+    "admin": {
+      "title": "Admin Panel",
+      "rows": 3,
+      "permission": "hytalemenus.admin",
+      "items": {
+        "0": {
+          "icon": "BEACON",
+          "name": "Holograms",
+          "lore": ["Manage holograms"],
+          "action": "command:holo"
+        },
+        "1": {
+          "icon": "VILLAGER_SPAWN_EGG",
+          "name": "NPCs",
+          "lore": ["Manage NPCs"],
+          "action": "command:npc"
+        },
+        "2": {
+          "icon": "STRUCTURE_BLOCK",
+          "name": "Regions",
+          "lore": ["Manage regions"],
+          "action": "command:rg"
+        },
+        "3": {
+          "icon": "SPAWNER",
+          "name": "Summon",
+          "lore": ["Summon entities"],
+          "action": "message:Use /summon <entity> to spawn"
+        },
+        "4": {
+          "icon": "LAVA_BUCKET",
+          "name": "Kill All",
+          "lore": ["Kill all entities"],
+          "action": "command:killall"
+        },
+        "5": {
+          "icon": "GRASS_BLOCK",
+          "name": "Multiverse",
+          "lore": ["World management"],
+          "action": "command:mv"
+        },
+        "6": {
+          "icon": "COMPARATOR",
+          "name": "Gamerules",
+          "lore": ["Edit gamerules"],
+          "action": "command:gamerule"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "Back to Menu",
+          "lore": ["Return to main menu"],
+          "action": "menu:main"
+        },
+        "8": {
+          "icon": "FIREWORK_ROCKET",
+          "name": "Block Particles",
+          "lore": ["Manage block particles"],
+          "action": "command:bp"
+        }
+      }
+    }
+  },
+
+  "pages": {
+    "rules": {
+      "title": "Server Rules",
+      "lines": [
+        "Welcome to our server, {player}!",
+        "",
+        "Please follow these rules:",
+        "",
+        "1. Be respectful to all players",
+        "2. No griefing or stealing",
+        "3. No cheating, hacking, or exploits",
+        "4. Keep chat family-friendly",
+        "5. No spamming or advertising",
+        "6. Listen to staff members",
+        "7. No real-money trading",
+        "8. Report bugs, don't abuse them",
+        "",
+        "Breaking rules may result in a ban."
+      ]
+    },
+    "welcome": {
+      "title": "Welcome!",
+      "lines": [
+        "Hello {player}, welcome to our server!",
+        "",
+        "Getting Started:",
+        "- Use /spawn to go to spawn",
+        "- Use /sethome to save your home",
+        "- Use /home to return home",
+        "- Use /jobs to earn money",
+        "- Use /shop to buy and sell",
+        "",
+        "Need help? Use /discord to join",
+        "our community Discord server!",
+        "",
+        "Enjoy your stay!"
+      ]
+    }
+  }
+}
