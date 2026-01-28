@@ -99,13 +99,13 @@
           "icon": "RED_BED",
           "name": "Spawn",
           "lore": ["Return to spawn point"],
-          "action": "command:spawn"
+          "action": "close-command:spawn"
         },
         "1": {
           "icon": "CAMPFIRE",
           "name": "Home",
           "lore": ["Teleport to your home"],
-          "action": "command:home"
+          "action": "close-command:home"
         },
         "2": {
           "icon": "END_PORTAL_FRAME",

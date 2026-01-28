@@ -143,18 +143,34 @@ public class HytaleMenusPlugin extends JavaPlugin {
             playerRef.sendMessage(MessageUtil.of(message));
         });
 
-        // command - Run a command as the player
+        // command - Run a command as the player (keeps menu open for commands that open their own UI)
         // Usage: command:vault 1
         actionRegistry.register("command", (player, playerRef, ref, store, args) -> {
             if (args.length < 1) return;
             String command = String.join(" ", args);
-            if (!command.startsWith("/")) {
-                command = "/" + command;
+            // Strip leading slash if present - CommandManager expects command name only
+            if (command.startsWith("/")) {
+                command = command.substring(1);
             }
-            CommandManager.get().handleCommand(playerRef, command);
+            CommandManager.get().handleCommand(player, command);
         });
 
-        LOGGER.info("Registered built-in actions: close, menu, page, message, command");
+        // close-command - Close the menu first, then run a command (for teleports, etc.)
+        // Usage: close-command:spawn
+        actionRegistry.register("close-command", (player, playerRef, ref, store, args) -> {
+            if (args.length < 1) return;
+            String command = String.join(" ", args);
+            // Strip leading slash if present - CommandManager expects command name only
+            if (command.startsWith("/")) {
+                command = command.substring(1);
+            }
+            // Close the menu first to prevent loading screen on teleport
+            player.getPageManager().setPage(ref, store, Page.None);
+            // Execute the command
+            CommandManager.get().handleCommand(player, command);
+        });
+
+        LOGGER.info("Registered built-in actions: close, menu, page, message, command, close-command");
     }
 
     /**
