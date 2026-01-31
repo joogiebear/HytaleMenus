@@ -166,8 +166,10 @@ public class HytaleMenusPlugin extends JavaPlugin {
             }
             // Close the menu first to prevent loading screen on teleport
             player.getPageManager().setPage(ref, store, Page.None);
-            // Execute the command
-            CommandManager.get().handleCommand(player, command);
+            // Schedule command execution after a short delay to let the UI fully close
+            final String finalCommand = command;
+            java.util.concurrent.CompletableFuture.delayedExecutor(50, java.util.concurrent.TimeUnit.MILLISECONDS)
+                .execute(() -> CommandManager.get().handleCommand(player, finalCommand));
         });
 
         LOGGER.info("Registered built-in actions: close, menu, page, message, command, close-command");

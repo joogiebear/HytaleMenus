@@ -1,6 +1,7 @@
 {
   "_comment": [
     "=== HytaleMenus Configuration ===",
+    "=== Configured for HTSkyBlock Server ===",
     "",
     "SLOT LAYOUT (3x3 grid, slots 0-8):",
     "  [0] [1] [2]",
@@ -16,6 +17,7 @@
     "  page:name:menu     - Open a text page (back returns to menu)",
     "  message:text       - Send a message to the player",
     "  command:cmd args   - Run a command as the player",
+    "  close-command:cmd  - Close menu then run command",
     "",
     "PERMISSIONS:",
     "  permission: 'node'     - Required permission to see/use item",
@@ -26,67 +28,205 @@
     "  {player} or %player% - Player's name"
   ],
   "defaultMenu": "main",
-  "noPermissionMessage": "You don't have permission to access this.",
+  "noPermissionMessage": "&cYou don't have permission to access this.",
   "menus": {
     "main": {
       "title": "Server Menu",
       "rows": 3,
       "items": {
         "0": {
-          "icon": "COMPASS",
-          "name": "Teleportation",
-          "lore": ["Homes, Warps, Spawn & More"],
-          "action": "menu:teleport"
+          "icon": "GRASS_BLOCK",
+          "name": "&bIsland",
+          "lore": ["&7Manage your SkyBlock island"],
+          "action": "menu:island"
         },
         "1": {
-          "icon": "GOLD_INGOT",
-          "name": "Economy",
-          "lore": ["Balance, Shop & Trading"],
-          "action": "menu:economy"
+          "icon": "COMPASS",
+          "name": "&eTeleportation",
+          "lore": ["&7Homes, Spawn & Travel"],
+          "action": "menu:teleport"
         },
         "2": {
-          "icon": "DIAMOND_SWORD",
-          "name": "Progression",
-          "lore": ["Jobs, Levels & Kits"],
-          "action": "menu:progression"
+          "icon": "GOLD_INGOT",
+          "name": "&6Economy",
+          "lore": ["&7Balance, Shop & Trading"],
+          "action": "menu:economy"
         },
         "3": {
-          "icon": "CLOCK",
-          "name": "Daily Rewards",
-          "lore": ["Claim your daily rewards!"],
-          "action": "command:daily"
+          "icon": "CHEST",
+          "name": "&dCrates",
+          "lore": ["&7Lootboxes & Keys"],
+          "action": "menu:crates"
         },
         "4": {
-          "icon": "CHEST",
-          "name": "Personal Vaults",
-          "lore": ["Access your storage"],
-          "action": "command:vault"
+          "icon": "EXPERIENCE_BOTTLE",
+          "name": "&aSkills",
+          "lore": ["&7View your skill progress"],
+          "action": "close-command:lvl gui"
         },
         "5": {
-          "icon": "ENDER_PEARL",
-          "name": "Random Teleport",
-          "lore": ["Teleport to a random location"],
-          "action": "command:rtp"
+          "icon": "BONE",
+          "name": "&5Pets",
+          "lore": ["&7Manage your pets"],
+          "action": "close-command:pets"
         },
         "6": {
-          "icon": "PAPER",
-          "name": "Messages",
-          "lore": ["Private messaging options"],
-          "action": "menu:messages"
+          "icon": "BOOK",
+          "name": "&fServer Info",
+          "lore": ["&7Rules, Help & More"],
+          "action": "menu:info"
         },
         "7": {
-          "icon": "BOOK",
-          "name": "Server Info",
-          "lore": ["Rules, Discord & Help"],
-          "action": "menu:info"
+          "icon": "BARRIER",
+          "name": "&cClose",
+          "lore": ["&7Close this menu"],
+          "action": "close"
         },
         "8": {
           "icon": "COMMAND_BLOCK",
-          "name": "Admin Panel",
-          "lore": ["Server administration"],
+          "name": "&4Admin Panel",
+          "lore": ["&7Server administration"],
           "action": "menu:admin",
-          "permission": "hytalemenus.admin",
+          "permission": "htskyblock.admin.reload",
           "noPermission": "hide"
+        }
+      }
+    },
+
+    "island": {
+      "title": "Island Menu",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "OAK_SAPLING",
+          "name": "&aCreate Island",
+          "lore": ["&7Create your personal island"],
+          "action": "close-command:island create",
+          "permission": "htskyblock.island.create"
+        },
+        "1": {
+          "icon": "RED_BED",
+          "name": "&bIsland Home",
+          "lore": ["&7Teleport to your island"],
+          "action": "close-command:island home",
+          "permission": "htskyblock.island.home"
+        },
+        "2": {
+          "icon": "COMPARATOR",
+          "name": "&eIsland Settings",
+          "lore": ["&7Configure your island"],
+          "action": "close-command:island settings",
+          "permission": "htskyblock.island.settings"
+        },
+        "3": {
+          "icon": "PLAYER_HEAD",
+          "name": "&dMembers",
+          "lore": ["&7Manage island members"],
+          "action": "close-command:island members",
+          "permission": "htskyblock.island.members"
+        },
+        "4": {
+          "icon": "ENDER_EYE",
+          "name": "&6Visit Islands",
+          "lore": ["&7Browse public islands"],
+          "action": "close-command:island visit",
+          "permission": "htskyblock.island.visit"
+        },
+        "5": {
+          "icon": "DIAMOND",
+          "name": "&bIsland Top",
+          "lore": ["&7View the leaderboard"],
+          "action": "close-command:island top",
+          "permission": "htskyblock.island.top"
+        },
+        "6": {
+          "icon": "PAPER",
+          "name": "&fIsland Info",
+          "lore": ["&7View your island stats"],
+          "action": "close-command:island info",
+          "permission": "htskyblock.island.info"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "&7Back",
+          "lore": ["&7Return to main menu"],
+          "action": "menu:main"
+        },
+        "8": {
+          "icon": "FEATHER",
+          "name": "&bToggle Fly",
+          "lore": ["&7Toggle flight on your island"],
+          "action": "close-command:island fly",
+          "permission": "htskyblock.island.fly"
+        }
+      }
+    },
+
+    "island_management": {
+      "title": "Island Management",
+      "rows": 3,
+      "items": {
+        "0": {
+          "icon": "WHITE_BED",
+          "name": "&eSet Home",
+          "lore": ["&7Set your personal home location"],
+          "action": "close-command:island sethome",
+          "permission": "htskyblock.island.sethome"
+        },
+        "1": {
+          "icon": "ENDER_PEARL",
+          "name": "&dSet Spawn",
+          "lore": ["&7Set where visitors spawn"],
+          "action": "close-command:island setspawn",
+          "permission": "htskyblock.island.setspawn"
+        },
+        "2": {
+          "icon": "EMERALD_BLOCK",
+          "name": "&aUpgrade Island",
+          "lore": ["&7Increase your island size"],
+          "action": "close-command:island upgrade",
+          "permission": "htskyblock.island.upgrade"
+        },
+        "3": {
+          "icon": "BELL",
+          "name": "&6Visit Requests",
+          "lore": ["&7View pending requests"],
+          "action": "close-command:island requests",
+          "permission": "htskyblock.island.requests"
+        },
+        "4": {
+          "icon": "IRON_DOOR",
+          "name": "&cExpel Visitors",
+          "lore": ["&7Remove all visitors from island"],
+          "action": "close-command:island expel",
+          "permission": "htskyblock.island.expel"
+        },
+        "5": {
+          "icon": "BARRIER",
+          "name": "&4Toggle Auto-Deny",
+          "lore": ["&7Auto-deny all visit requests"],
+          "action": "close-command:island denyall",
+          "permission": "htskyblock.island.denyall"
+        },
+        "6": {
+          "icon": "TNT",
+          "name": "&4Reset Island",
+          "lore": ["&cWarning: This cannot be undone!"],
+          "action": "close-command:island reset",
+          "permission": "htskyblock.island.reset"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "&7Back",
+          "lore": ["&7Return to island menu"],
+          "action": "menu:island"
+        },
+        "8": {
+          "icon": "OAK_DOOR",
+          "name": "&7Leave Island",
+          "lore": ["&7Leave the island you're visiting"],
+          "action": "close-command:island leave",
+          "permission": "htskyblock.island.leave"
         }
       }
     },
@@ -96,58 +236,62 @@
       "rows": 3,
       "items": {
         "0": {
-          "icon": "RED_BED",
-          "name": "Spawn",
-          "lore": ["Return to spawn point"],
-          "action": "close-command:spawn"
+          "icon": "NETHER_STAR",
+          "name": "&eSpawn",
+          "lore": ["&7Return to server spawn"],
+          "action": "close-command:spawn",
+          "permission": "htskyblock.spawn"
         },
         "1": {
-          "icon": "CAMPFIRE",
-          "name": "Home",
-          "lore": ["Teleport to your home"],
+          "icon": "RED_BED",
+          "name": "&bHome",
+          "lore": ["&7Teleport to your home"],
           "action": "close-command:home"
         },
         "2": {
-          "icon": "END_PORTAL_FRAME",
-          "name": "Warps",
-          "lore": ["View available warps"],
-          "action": "command:warp"
+          "icon": "OAK_SIGN",
+          "name": "&aSet Home",
+          "lore": ["&7Set your home location"],
+          "action": "close-command:sethome"
         },
         "3": {
           "icon": "PLAYER_HEAD",
-          "name": "TPA Request",
-          "lore": ["Request to teleport to a player"],
-          "action": "message:Use /tpa <player> to request teleport"
+          "name": "&dTPA Request",
+          "lore": ["&7Request teleport to a player", "&7Use: &f/tpa <player>"],
+          "action": "message:&eUse &f/tpa <player> &eto request teleport"
         },
         "4": {
-          "icon": "ENDER_PEARL",
-          "name": "Random Teleport",
-          "lore": ["Teleport to a random location"],
-          "action": "command:rtp"
+          "icon": "GRASS_BLOCK",
+          "name": "&bIsland Home",
+          "lore": ["&7Teleport to your island"],
+          "action": "close-command:island home",
+          "permission": "htskyblock.island.home"
         },
         "5": {
           "icon": "COMPASS",
-          "name": "Back",
-          "lore": ["Return to previous location"],
-          "action": "command:back"
+          "name": "&6Back",
+          "lore": ["&7Return to previous location", "&c(VIP Only)"],
+          "action": "close-command:back",
+          "permission": "hytalemenus.vip",
+          "noPermission": "deny"
         },
         "6": {
-          "icon": "OAK_SIGN",
-          "name": "Set Home",
-          "lore": ["Set your home location"],
-          "action": "command:sethome"
+          "icon": "BARRIER",
+          "name": "&cDelete Home",
+          "lore": ["&7Remove a saved home", "&7Use: &f/delhome <name>"],
+          "action": "message:&eUse &f/delhome <name> &eto delete a home"
         },
         "7": {
           "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
+          "name": "&7Back to Menu",
+          "lore": ["&7Return to main menu"],
           "action": "menu:main"
         },
         "8": {
-          "icon": "FILLED_MAP",
-          "name": "My Homes",
-          "lore": ["View all your homes"],
-          "action": "command:homes"
+          "icon": "ENDER_EYE",
+          "name": "&5Visit Island",
+          "lore": ["&7Visit another player's island", "&7Use: &f/island goto <player>"],
+          "action": "message:&eUse &f/island goto <player> &eto visit"
         }
       }
     },
@@ -158,131 +302,93 @@
       "items": {
         "0": {
           "icon": "GOLD_INGOT",
-          "name": "Balance",
-          "lore": ["Check your balance"],
-          "action": "command:bal"
+          "name": "&6Balance",
+          "lore": ["&7Check your current balance"],
+          "action": "command:bal",
+          "permission": "htskyblock.balance"
         },
         "1": {
-          "icon": "EMERALD",
-          "name": "Shop",
-          "lore": ["Browse the server shop"],
-          "action": "command:shop"
+          "icon": "CHEST",
+          "name": "&aShop",
+          "lore": ["&7Browse the server shop"],
+          "action": "close-command:shop",
+          "permission": "htskyblock.shop"
         },
         "2": {
-          "icon": "CHEST",
-          "name": "Auction House",
-          "lore": ["Buy and sell with players"],
-          "action": "command:ah"
-        },
-        "3": {
-          "icon": "PAPER",
-          "name": "Pay Player",
-          "lore": ["Send money to another player", "Use /pay <player> <amount>"],
-          "action": "message:Use /pay <player> <amount> to send money"
+          "icon": "EMERALD",
+          "name": "&bTrade",
+          "lore": ["&7Trade with other players"],
+          "action": "close-command:trade"
         },
         "4": {
           "icon": "DIAMOND",
-          "name": "Balance Top",
-          "lore": ["View richest players"],
-          "action": "command:baltop"
-        },
-        "5": {
-          "icon": "NETHER_STAR",
-          "name": "Store",
-          "lore": ["Visit the donation store"],
-          "action": "command:store"
+          "name": "&dIsland Top",
+          "lore": ["&7View island leaderboard"],
+          "action": "close-command:island top",
+          "permission": "htskyblock.island.top"
         },
         "7": {
           "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
+          "name": "&7Back to Menu",
+          "lore": ["&7Return to main menu"],
           "action": "menu:main"
         }
       }
     },
 
-    "progression": {
-      "title": "Progression",
+    "crates": {
+      "title": "Crates & Lootboxes",
       "rows": 3,
       "items": {
         "0": {
-          "icon": "IRON_PICKAXE",
-          "name": "Jobs",
-          "lore": ["View and join jobs"],
-          "action": "command:jobs"
+          "icon": "TRIPWIRE_HOOK",
+          "name": "&6My Keys",
+          "lore": ["&7View your key inventory"],
+          "action": "close-command:lootbox inventory"
         },
         "1": {
-          "icon": "EXPERIENCE_BOTTLE",
-          "name": "Level",
-          "lore": ["Check your level and XP"],
-          "action": "command:level"
+          "icon": "ENDER_CHEST",
+          "name": "&dAll Lootboxes",
+          "lore": ["&7View available lootboxes"],
+          "action": "close-command:lootbox list"
         },
         "2": {
           "icon": "CHEST",
-          "name": "Kits",
-          "lore": ["View available kits"],
-          "action": "command:kits"
+          "name": "&ePreview Starter",
+          "lore": ["&7See starter crate rewards"],
+          "action": "close-command:lootbox preview starter"
         },
         "3": {
-          "icon": "NAME_TAG",
-          "name": "Ranks",
-          "lore": ["View rank information"],
-          "action": "command:rank"
+          "icon": "TRAPPED_CHEST",
+          "name": "&aPreview Common",
+          "lore": ["&7See common crate rewards"],
+          "action": "close-command:lootbox preview common"
         },
         "4": {
-          "icon": "CLOCK",
-          "name": "Daily Rewards",
-          "lore": ["Claim daily rewards"],
-          "action": "command:daily"
+          "icon": "BARREL",
+          "name": "&bPreview Rare",
+          "lore": ["&7See rare crate rewards"],
+          "action": "close-command:lootbox preview rare"
         },
         "5": {
-          "icon": "NETHER_STAR",
-          "name": "Rewards",
-          "lore": ["View all rewards"],
-          "action": "command:rewards"
+          "icon": "SHULKER_BOX",
+          "name": "&5Preview Epic",
+          "lore": ["&7See epic crate rewards"],
+          "action": "close-command:lootbox preview epic"
         },
         "7": {
           "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
+          "name": "&7Back to Menu",
+          "lore": ["&7Return to main menu"],
           "action": "menu:main"
-        }
-      }
-    },
-
-    "messages": {
-      "title": "Messaging",
-      "rows": 3,
-      "items": {
-        "1": {
-          "icon": "PAPER",
-          "name": "Send Message",
-          "lore": ["Use /msg <player> <message>"],
-          "action": "message:Use /msg <player> <message> to send a private message"
         },
-        "3": {
-          "icon": "BARRIER",
-          "name": "Ignore Player",
-          "lore": ["Block messages from a player", "Use /ignore <player>"],
-          "action": "message:Use /ignore <player> to block their messages"
-        },
-        "4": {
-          "icon": "LEVER",
-          "name": "Toggle Messages",
-          "lore": ["Enable/disable private messages"],
-          "action": "command:msgtoggle"
-        },
-        "5": {
-          "icon": "BRUSH",
-          "name": "Chat Colors",
-          "lore": ["Customize your chat color"],
-          "action": "command:color"
-        },
-        "7": {
-          "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
-          "action": "menu:main"
+        "8": {
+          "icon": "COMMAND_BLOCK",
+          "name": "&4Lootbox Editor",
+          "lore": ["&7Admin: Manage lootboxes"],
+          "action": "close-command:lootbox editor",
+          "permission": "betterlootbox.admin",
+          "noPermission": "hide"
         }
       }
     },
@@ -291,34 +397,35 @@
       "title": "Server Info",
       "rows": 3,
       "items": {
-        "1": {
+        "0": {
           "icon": "BOOK",
-          "name": "Server Rules",
-          "lore": ["Read the server rules"],
-          "action": "page:rules:info"
+          "name": "&cRules",
+          "lore": ["&7Read the server rules"],
+          "action": "close-command:rules"
         },
-        "3": {
-          "icon": "HEART_OF_THE_SEA",
-          "name": "Discord",
-          "lore": ["Join our Discord server"],
-          "action": "command:discord"
+        "1": {
+          "icon": "WRITABLE_BOOK",
+          "name": "&eHelp",
+          "lore": ["&7Get help with commands"],
+          "action": "close-command:help"
+        },
+        "2": {
+          "icon": "GRASS_BLOCK",
+          "name": "&bIsland Help",
+          "lore": ["&7Island command reference"],
+          "action": "close-command:island help",
+          "permission": "htskyblock.island.help"
         },
         "4": {
           "icon": "PAPER",
-          "name": "Welcome",
-          "lore": ["Server information"],
+          "name": "&fWelcome",
+          "lore": ["&7Server information"],
           "action": "page:welcome:info"
-        },
-        "5": {
-          "icon": "TRIPWIRE_HOOK",
-          "name": "Keys",
-          "lore": ["View your crate keys"],
-          "action": "command:keys"
         },
         "7": {
           "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
+          "name": "&7Back to Menu",
+          "lore": ["&7Return to main menu"],
           "action": "menu:main"
         }
       }
@@ -327,61 +434,104 @@
     "admin": {
       "title": "Admin Panel",
       "rows": 3,
-      "permission": "hytalemenus.admin",
+      "permission": "htskyblock.admin.reload",
       "items": {
         "0": {
-          "icon": "BEACON",
-          "name": "Holograms",
-          "lore": ["Manage holograms"],
-          "action": "command:holo"
+          "icon": "REPEATER",
+          "name": "&eReload SkyBlock",
+          "lore": ["&7Reload HTSkyBlock config"],
+          "action": "command:htskyblock reload",
+          "permission": "htskyblock.admin.reload"
         },
         "1": {
-          "icon": "VILLAGER_SPAWN_EGG",
-          "name": "NPCs",
-          "lore": ["Manage NPCs"],
-          "action": "command:npc"
+          "icon": "CHEST",
+          "name": "&dLootbox Editor",
+          "lore": ["&7Manage lootboxes"],
+          "action": "close-command:lootbox editor",
+          "permission": "betterlootbox.admin"
         },
         "2": {
-          "icon": "STRUCTURE_BLOCK",
-          "name": "Regions",
-          "lore": ["Manage regions"],
-          "action": "command:rg"
+          "icon": "COMPARATOR",
+          "name": "&bReload Lootbox",
+          "lore": ["&7Reload lootbox config"],
+          "action": "command:lootbox reload",
+          "permission": "betterlootbox.admin"
         },
         "3": {
-          "icon": "SPAWNER",
-          "name": "Summon",
-          "lore": ["Summon entities"],
-          "action": "message:Use /summon <entity> to spawn"
+          "icon": "GOLD_BLOCK",
+          "name": "&6Balance Management",
+          "lore": ["&7Manage player balances"],
+          "action": "menu:admin_balance",
+          "permission": "htskyblock.admin.balance.check"
         },
         "4": {
-          "icon": "LAVA_BUCKET",
-          "name": "Kill All",
-          "lore": ["Kill all entities"],
-          "action": "command:killall"
+          "icon": "TRIPWIRE_HOOK",
+          "name": "&aGive Keys",
+          "lore": ["&7Give lootbox keys to players", "&7Use: &f/lootbox givekey <player> <box> <amount>"],
+          "action": "message:&eUse &f/lootbox givekey <player> <box> <amount>",
+          "permission": "betterlootbox.givekey"
         },
         "5": {
-          "icon": "GRASS_BLOCK",
-          "name": "Multiverse",
-          "lore": ["World management"],
-          "action": "command:mv"
-        },
-        "6": {
-          "icon": "COMPARATOR",
-          "name": "Gamerules",
-          "lore": ["Edit gamerules"],
-          "action": "command:gamerule"
+          "icon": "WRITABLE_BOOK",
+          "name": "&fSkyBlock Help",
+          "lore": ["&7Admin command reference"],
+          "action": "command:htskyblock help",
+          "permission": "htskyblock.admin.help"
         },
         "7": {
           "icon": "ARROW",
-          "name": "Back to Menu",
-          "lore": ["Return to main menu"],
+          "name": "&7Back to Menu",
+          "lore": ["&7Return to main menu"],
           "action": "menu:main"
         },
         "8": {
-          "icon": "FIREWORK_ROCKET",
-          "name": "Block Particles",
-          "lore": ["Manage block particles"],
-          "action": "command:bp"
+          "icon": "STRUCTURE_VOID",
+          "name": "&cSave Lootbox",
+          "lore": ["&7Save lootbox data"],
+          "action": "command:lootbox save",
+          "permission": "betterlootbox.admin"
+        }
+      }
+    },
+
+    "admin_balance": {
+      "title": "Balance Management",
+      "rows": 3,
+      "permission": "htskyblock.admin.balance.check",
+      "items": {
+        "1": {
+          "icon": "GOLD_INGOT",
+          "name": "&6Check Balance",
+          "lore": ["&7Check a player's balance", "&7Use: &f/adminbalance check <player>"],
+          "action": "message:&eUse &f/adminbalance check <player>",
+          "permission": "htskyblock.admin.balance.check"
+        },
+        "3": {
+          "icon": "EMERALD",
+          "name": "&aAdd Money",
+          "lore": ["&7Add money to a player", "&7Use: &f/adminbalance add <player> <amount>"],
+          "action": "message:&eUse &f/adminbalance add <player> <amount>",
+          "permission": "htskyblock.admin.balance.add"
+        },
+        "4": {
+          "icon": "DIAMOND",
+          "name": "&bSet Balance",
+          "lore": ["&7Set a player's balance", "&7Use: &f/adminbalance set <player> <amount>"],
+          "action": "message:&eUse &f/adminbalance set <player> <amount>",
+          "permission": "htskyblock.admin.balance.set"
+        },
+        "5": {
+          "icon": "REDSTONE",
+          "name": "&cRemove Money",
+          "lore": ["&7Remove money from a player", "&7Use: &f/adminbalance remove <player> <amount>"],
+          "action": "message:&eUse &f/adminbalance remove <player> <amount>",
+          "permission": "htskyblock.admin.balance.remove"
+        },
+        "7": {
+          "icon": "ARROW",
+          "name": "&7Back",
+          "lore": ["&7Return to admin panel"],
+          "action": "menu:admin"
         }
       }
     }
@@ -391,38 +541,41 @@
     "rules": {
       "title": "Server Rules",
       "lines": [
-        "Welcome to our server, {player}!",
+        "&bWelcome to HTSkyBlock, &f{player}&b!",
         "",
-        "Please follow these rules:",
+        "&ePlease follow these rules:",
         "",
-        "1. Be respectful to all players",
-        "2. No griefing or stealing",
-        "3. No cheating, hacking, or exploits",
-        "4. Keep chat family-friendly",
-        "5. No spamming or advertising",
-        "6. Listen to staff members",
-        "7. No real-money trading",
-        "8. Report bugs, don't abuse them",
+        "&f1. &7Be respectful to all players",
+        "&f2. &7No griefing or stealing",
+        "&f3. &7No cheating, hacking, or exploits",
+        "&f4. &7Keep chat family-friendly",
+        "&f5. &7No spamming or advertising",
+        "&f6. &7Listen to staff members",
+        "&f7. &7No real-money trading",
+        "&f8. &7Report bugs, don't abuse them",
         "",
-        "Breaking rules may result in a ban."
+        "&cBreaking rules may result in a ban."
       ]
     },
     "welcome": {
-      "title": "Welcome!",
+      "title": "Welcome to HTSkyBlock!",
       "lines": [
-        "Hello {player}, welcome to our server!",
+        "&bHello &f{player}&b, welcome!",
         "",
-        "Getting Started:",
-        "- Use /spawn to go to spawn",
-        "- Use /sethome to save your home",
-        "- Use /home to return home",
-        "- Use /jobs to earn money",
-        "- Use /shop to buy and sell",
+        "&eGetting Started:",
+        "&7- Use &f/island create &7to make your island",
+        "&7- Use &f/island home &7to go to your island",
+        "&7- Use &f/shop &7to buy and sell items",
+        "&7- Use &f/bal &7to check your balance",
         "",
-        "Need help? Use /discord to join",
-        "our community Discord server!",
+        "&eProgression:",
+        "&7- Use &f/lvl gui &7to view your skills",
+        "&7- Use &f/island top &7to see the leaderboard",
+        "&7- Use &f/lootbox inventory &7for your keys",
         "",
-        "Enjoy your stay!"
+        "&aNeed help? Use &f/help &aor ask staff!",
+        "",
+        "&dEnjoy your SkyBlock adventure!"
       ]
     }
   }

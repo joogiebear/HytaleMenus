@@ -121,7 +121,7 @@ public class ConfigManager {
 
         // Vaults item - runs /vault command
         MenuItemConfig vaultsItem = new MenuItemConfig();
-        vaultsItem.setIcon("CHEST");
+        vaultsItem.setIcon("Furniture_Crude_Chest_Small");
         vaultsItem.setName("Personal Vaults");
         vaultsItem.setLore(java.util.List.of(
             "Access your personal storage",
@@ -132,7 +132,7 @@ public class ConfigManager {
 
         // Info submenu
         MenuItemConfig infoItem = new MenuItemConfig();
-        infoItem.setIcon("BOOK");
+        infoItem.setIcon("Furniture_Ancient_Bookshelf");
         infoItem.setName("Server Info");
         infoItem.setLore(java.util.List.of("Learn about our server"));
         infoItem.setAction("menu:info");
@@ -140,7 +140,7 @@ public class ConfigManager {
 
         // Admin panel - hidden for non-admins
         MenuItemConfig adminItem = new MenuItemConfig();
-        adminItem.setIcon("COMMAND_BLOCK");
+        adminItem.setIcon("Furniture_Construction_Sign");
         adminItem.setName("Admin Panel");
         adminItem.setLore(java.util.List.of("Server administration"));
         adminItem.setAction("menu:admin");
@@ -160,7 +160,7 @@ public class ConfigManager {
 
         // Welcome page - opens text page
         MenuItemConfig welcomeItem = new MenuItemConfig();
-        welcomeItem.setIcon("PAPER");
+        welcomeItem.setIcon("Furniture_Crude_Sign");
         welcomeItem.setName("Welcome");
         welcomeItem.setLore(java.util.List.of("Server welcome info"));
         welcomeItem.setAction("page:welcome:info");
@@ -168,7 +168,7 @@ public class ConfigManager {
 
         // Rules page - opens text page
         MenuItemConfig rulesItem = new MenuItemConfig();
-        rulesItem.setIcon("BOOK");
+        rulesItem.setIcon("Furniture_Ancient_Bookshelf");
         rulesItem.setName("Server Rules");
         rulesItem.setLore(java.util.List.of("Read the server rules"));
         rulesItem.setAction("page:rules:info");
@@ -176,7 +176,7 @@ public class ConfigManager {
 
         // Close example
         MenuItemConfig closeItem = new MenuItemConfig();
-        closeItem.setIcon("BARRIER");
+        closeItem.setIcon("Weapon_Shield_Iron");
         closeItem.setName("Close Menu");
         closeItem.setLore(java.util.List.of("Close this menu"));
         closeItem.setAction("close");
@@ -184,7 +184,7 @@ public class ConfigManager {
 
         // Back button
         MenuItemConfig backItem = new MenuItemConfig();
-        backItem.setIcon("ARROW");
+        backItem.setIcon("Weapon_Arrow_Iron");
         backItem.setName("Back");
         backItem.setLore(java.util.List.of("Return to main menu"));
         backItem.setAction("menu:main");
@@ -203,7 +203,7 @@ public class ConfigManager {
 
         // Reload button
         MenuItemConfig reloadItem = new MenuItemConfig();
-        reloadItem.setIcon("REDSTONE");
+        reloadItem.setIcon("Tool_Hammer_Crude");
         reloadItem.setName("Reload Menus");
         reloadItem.setLore(java.util.List.of("Reload menu configuration"));
         reloadItem.setAction("message:Use /menuadmin reload to reload configs");
@@ -211,7 +211,7 @@ public class ConfigManager {
 
         // Back button
         MenuItemConfig adminBackItem = new MenuItemConfig();
-        adminBackItem.setIcon("ARROW");
+        adminBackItem.setIcon("Weapon_Arrow_Iron");
         adminBackItem.setName("Back");
         adminBackItem.setLore(java.util.List.of("Return to main menu"));
         adminBackItem.setAction("menu:main");

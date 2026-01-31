@@ -105,7 +105,13 @@ public class MenuPage extends InteractiveCustomUIPage<MenuPage.MenuEventData> {
                 MessageUtil.translateColors(itemConfig.getName()),
                 playerName
             );
-            cmd.set(buttonId + ".Text", itemName);
+            cmd.set("#Slot" + slot + "Text.Text", itemName);
+
+            // Set icon using ItemId property
+            String iconId = itemConfig.getIcon();
+            if (iconId != null && !iconId.isEmpty()) {
+                cmd.set("#Slot" + slot + "Icon.ItemId", iconId);
+            }
 
             // Bind click event
             evt.addEventBinding(

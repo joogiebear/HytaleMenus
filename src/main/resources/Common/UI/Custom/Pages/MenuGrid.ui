@@ -1,7 +1,15 @@
-@ButtonStyle = TextButtonStyle(
-  Default: (Background: #3a7bd5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
-  Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
-  Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+@SlotStyle = (
+  Default: (Background: #3a7bd5),
+  Hovered: (Background: #4a8be5),
+  Pressed: (Background: #2a6bc5)
+);
+
+@SlotLabelStyle = (
+  FontSize: 11,
+  TextColor: #ffffff,
+  RenderBold: true,
+  HorizontalAlignment: Center,
+  VerticalAlignment: Center
 );
 
 @CloseButtonStyle = TextButtonStyle(
@@ -11,7 +19,7 @@
 );
 
 Group {
-  Anchor: (Width: 420, Height: 400);
+  Anchor: (Width: 420, Height: 420);
   Background: #141c26(0.98);
   LayoutMode: Top;
   Padding: (Full: 20);
@@ -36,28 +44,61 @@ Group {
 
   Group #Row0 {
     LayoutMode: Center;
-    Anchor: (Height: 50);
+    Anchor: (Height: 70);
 
-    TextButton #Slot0 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot0 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot0Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot0Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot1 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot1 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot1Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot1Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot2 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot2 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot2Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot2Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
   }
 
@@ -65,28 +106,61 @@ Group {
 
   Group #Row1 {
     LayoutMode: Center;
-    Anchor: (Height: 50);
+    Anchor: (Height: 70);
 
-    TextButton #Slot3 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot3 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot3Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot3Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot4 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot4 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot4Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot4Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot5 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot5 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot5Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot5Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
   }
 
@@ -94,28 +168,61 @@ Group {
 
   Group #Row2 {
     LayoutMode: Center;
-    Anchor: (Height: 50);
+    Anchor: (Height: 70);
 
-    TextButton #Slot6 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot6 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot6Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot6Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot7 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot7 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot7Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot7Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
 
     Group { Anchor: (Width: 10); }
 
-    TextButton #Slot8 {
-      Text: "";
-      Anchor: (Width: 110, Height: 42);
-      Style: @ButtonStyle;
+    Button #Slot8 {
+      Anchor: (Width: 110, Height: 62);
+      Style: @SlotStyle;
+      LayoutMode: Top;
+      Padding: (Full: 4);
+
+      ItemIcon #Slot8Icon {
+        Anchor: (Width: 32, Height: 32);
+      }
+
+      Label #Slot8Text {
+        Text: "";
+        Anchor: (Height: 20);
+        Style: @SlotLabelStyle;
+      }
     }
   }
 
