@@ -63,8 +63,10 @@ public class HytaleMenusPlugin extends JavaPlugin {
         LOGGER.info("HytaleMenus is starting...");
 
         // Register commands
-        getCommandRegistry().registerCommand(new MenuCommand(this));
-        LOGGER.info("Registered /menu command");
+        MenuCommand menuCommand = new MenuCommand(this);
+        menuCommand.registerMenuSubCommands();
+        getCommandRegistry().registerCommand(menuCommand);
+        LOGGER.info("Registered /menu command with " + configManager.getMenuCount() + " subcommands");
 
         getCommandRegistry().registerCommand(new MenuAdminCommand(this));
         LOGGER.info("Registered /menuadmin command");

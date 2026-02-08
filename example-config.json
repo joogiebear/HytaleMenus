@@ -140,11 +140,10 @@
           "permission": "htskyblock.island.top"
         },
         "6": {
-          "icon": "Furniture_Crude_Sign",
-          "name": "&fIsland Info",
-          "lore": ["&7View your island stats"],
-          "action": "close-command:island info",
-          "permission": "htskyblock.island.info"
+          "icon": "Tool_Hammer_Crude",
+          "name": "&eMore Options",
+          "lore": ["&7Island management tools"],
+          "action": "menu:island_management"
         },
         "7": {
           "icon": "Weapon_Arrow_Iron",
@@ -190,7 +189,7 @@
         "3": {
           "icon": "Furniture_Ancient_Candle",
           "name": "&6Visit Requests",
-          "lore": ["&7View pending requests"],
+          "lore": ["&7View pending requests", "&7Accept: &f/island accept <player>", "&7Deny: &f/island deny <player>"],
           "action": "close-command:island requests",
           "permission": "htskyblock.island.requests"
         },
@@ -202,11 +201,11 @@
           "permission": "htskyblock.island.expel"
         },
         "5": {
-          "icon": "Weapon_Shield_Iron",
-          "name": "&4Toggle Auto-Deny",
-          "lore": ["&7Auto-deny all visit requests"],
-          "action": "close-command:island denyall",
-          "permission": "htskyblock.island.denyall"
+          "icon": "Ore_Copper",
+          "name": "&eRecalculate Rank",
+          "lore": ["&7Recalculate your island rank"],
+          "action": "close-command:island calc",
+          "permission": "htskyblock.island.calc"
         },
         "6": {
           "icon": "Weapon_Bomb_Fire",
@@ -222,11 +221,11 @@
           "action": "menu:island"
         },
         "8": {
-          "icon": "Furniture_Ancient_Door",
-          "name": "&7Leave Island",
-          "lore": ["&7Leave the island you're visiting"],
-          "action": "close-command:island leave",
-          "permission": "htskyblock.island.leave"
+          "icon": "Weapon_Shield_Iron",
+          "name": "&4Toggle Auto-Deny",
+          "lore": ["&7Auto-deny all visit requests"],
+          "action": "close-command:island denyall",
+          "permission": "htskyblock.island.denyall"
         }
       }
     },
@@ -256,9 +255,9 @@
         },
         "3": {
           "icon": "Armor_Iron_Head",
-          "name": "&dTPA Request",
-          "lore": ["&7Request teleport to a player", "&7Use: &f/tpa <player>"],
-          "action": "message:&eUse &f/tpa <player> &eto request teleport"
+          "name": "&dTeleport Request",
+          "lore": ["&7Request teleport to a player", "&7Send: &f/tpa <player>", "&7Accept: &f/tpaccept"],
+          "action": "message:&eTo request teleport: &f/tpa <player>&e, To accept: &f/tpaccept"
         },
         "4": {
           "icon": "Plant_Bush_Green",
@@ -269,8 +268,8 @@
         },
         "5": {
           "icon": "Tool_Map",
-          "name": "&6Back",
-          "lore": ["&7Return to previous location", "&c(VIP Only)"],
+          "name": "&6Back Location",
+          "lore": ["&7Return to previous location", "&d(VIP Only)"],
           "action": "close-command:back",
           "permission": "hytalemenus.vip",
           "noPermission": "deny"
@@ -304,11 +303,11 @@
           "icon": "Ore_Gold",
           "name": "&6Balance",
           "lore": ["&7Check your current balance"],
-          "action": "command:bal",
+          "action": "close-command:bal",
           "permission": "htskyblock.balance"
         },
         "1": {
-          "icon": "Furniture_Crude_Chest_Small",
+          "icon": "Furniture_Ancient_Chest_Large",
           "name": "&aShop",
           "lore": ["&7Browse the server shop"],
           "action": "close-command:shop",
@@ -317,12 +316,20 @@
         "2": {
           "icon": "Ore_Mithril",
           "name": "&bTrade",
-          "lore": ["&7Trade with other players"],
+          "lore": ["&7Trade with other players", "&7Use: &f/trade <player>"],
           "action": "close-command:trade"
         },
         "4": {
+          "icon": "Tool_Hammer_Iron",
+          "name": "&dRepair",
+          "lore": ["&7Repair your items", "&d(VIP Only)"],
+          "action": "close-command:repair",
+          "permission": "hytalemenus.vip",
+          "noPermission": "deny"
+        },
+        "5": {
           "icon": "Ore_Prisma",
-          "name": "&dIsland Top",
+          "name": "&bIsland Top",
           "lore": ["&7View island leaderboard"],
           "action": "close-command:island top",
           "permission": "htskyblock.island.top"
@@ -404,7 +411,7 @@
           "action": "close-command:rules"
         },
         "1": {
-          "icon": "Furniture_Ancient_Bookshelf",
+          "icon": "Furniture_Crude_Sign",
           "name": "&eHelp",
           "lore": ["&7Get help with commands"],
           "action": "close-command:help"
@@ -416,11 +423,24 @@
           "action": "close-command:island help",
           "permission": "htskyblock.island.help"
         },
+        "3": {
+          "icon": "Armor_Iron_Head",
+          "name": "&dMessage Player",
+          "lore": ["&7Send a private message", "&7Use: &f/msg <player> <message>", "&7Reply: &f/r <message>"],
+          "action": "message:&eTo message: &f/msg <player> <message>&e, To reply: &f/r <message>"
+        },
         "4": {
-          "icon": "Furniture_Crude_Sign",
+          "icon": "Furniture_Ancient_Painting",
           "name": "&fWelcome",
           "lore": ["&7Server information"],
           "action": "page:welcome:info"
+        },
+        "5": {
+          "icon": "Furniture_Ancient_Bookshelf",
+          "name": "&6Island Info",
+          "lore": ["&7View your island stats"],
+          "action": "close-command:island info",
+          "permission": "htskyblock.island.info"
         },
         "7": {
           "icon": "Weapon_Arrow_Iron",
@@ -568,14 +588,21 @@
         "&7- Use &f/shop &7to buy and sell items",
         "&7- Use &f/bal &7to check your balance",
         "",
+        "&eUseful Commands:",
+        "&7- Use &f/spawn &7to return to spawn",
+        "&7- Use &f/home &7to teleport home",
+        "&7- Use &f/tpa <player> &7to request teleport",
+        "&7- Use &f/msg <player> &7to send a message",
+        "",
         "&eProgression:",
         "&7- Use &f/lvl gui &7to view your skills",
         "&7- Use &f/island top &7to see the leaderboard",
         "&7- Use &f/lootbox inventory &7for your keys",
+        "&7- Use &f/pets &7to manage your pets",
         "",
-        "&aNeed help? Use &f/help &aor ask staff!",
+        "&dVIP Perks: &f/fly&7, &f/back&7, &f/repair",
         "",
-        "&dEnjoy your SkyBlock adventure!"
+        "&aNeed help? Use &f/help &aor ask staff!"
       ]
     }
   }

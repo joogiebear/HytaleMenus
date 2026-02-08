@@ -27,9 +27,16 @@ public class MenuCommand extends AbstractCommand {
     public MenuCommand(HytaleMenusPlugin plugin) {
         super("menu", "Open a menu");
         this.plugin = plugin;
+    }
 
-        // Register subcommands for each menu
-        // This will be dynamically populated after config loads
+    /**
+     * Register subcommands for each menu defined in config.
+     * Must be called after config is loaded.
+     */
+    public void registerMenuSubCommands() {
+        for (String menuName : plugin.getConfigManager().getMenuNames()) {
+            addSubCommand(new MenuNameSubCommand(plugin, menuName));
+        }
     }
 
     @Override
