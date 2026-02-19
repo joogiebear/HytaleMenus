@@ -174,7 +174,34 @@ public class HytaleMenusPlugin extends JavaPlugin {
                 .execute(() -> CommandManager.get().handleCommand(player, finalCommand));
         });
 
-        LOGGER.info("Registered built-in actions: close, menu, page, message, command, close-command");
+        // console - Run a command as the server console (op-level)
+        // Usage: console:lp user %player% permission set some.perm true
+        actionRegistry.register("console", (player, playerRef, ref, store, args) -> {
+            if (args.length < 1) return;
+            String command = String.join(" ", args);
+            if (command.startsWith("/")) {
+                command = command.substring(1);
+            }
+            command = command.replace("%player%", playerRef.getUsername());
+            CommandManager.get().handleConsoleCommand(command);
+        });
+
+        // close-console - Close the menu first, then run a command as console
+        // Usage: close-console:tp %player% spawn
+        actionRegistry.register("close-console", (player, playerRef, ref, store, args) -> {
+            if (args.length < 1) return;
+            String command = String.join(" ", args);
+            if (command.startsWith("/")) {
+                command = command.substring(1);
+            }
+            command = command.replace("%player%", playerRef.getUsername());
+            player.getPageManager().setPage(ref, store, Page.None);
+            final String finalCommand = command;
+            java.util.concurrent.CompletableFuture.delayedExecutor(50, java.util.concurrent.TimeUnit.MILLISECONDS)
+                .execute(() -> CommandManager.get().handleConsoleCommand(finalCommand));
+        });
+
+        LOGGER.info("Registered built-in actions: close, menu, page, message, command, close-command, console, close-console");
     }
 
     /**
