@@ -1,0 +1,18 @@
+{
+  "Group": "joogiebear",
+  "Name": "HytaleMenus",
+  "Version": "${version}",
+  "Description": "Custom GUI menu plugin for Hytale servers",
+  "Authors": [
+    {
+      "Name": "joogiebear"
+    }
+  ],
+  "Website": "https://github.com/joogiebear",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "Main": "com.joogiebear.hytalemenus.HytaleMenusPlugin",
+  "IncludesAssetPack": true
+}

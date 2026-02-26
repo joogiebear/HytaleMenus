@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.joogiebear'
+version = '1.2.2'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Hytale Server JAR - download from https://cdn.hytale.com/HytaleServer.jar
+    // Place it in the 'libs' folder
+    compileOnly files('libs/HytaleServer.jar')
+
+    // JSON handling - provided by the Hytale server
+    compileOnly 'com.google.code.gson:gson:2.10.1'
+
+    // Testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName.set('HytaleMenus')
+}
+
+// Process resources - replace version placeholder in manifest
+processResources {
+    filesMatching('manifest.json') {
+        expand(
+            'version': project.version,
+            'name': project.name
+        )
+    }
+}
