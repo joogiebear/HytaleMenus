@@ -169,7 +169,7 @@ public class MenuPage extends InteractiveCustomUIPage<MenuPage.MenuEventData> {
             return;
         }
 
-        executeAction(action, player, ref, store);
+        executeAction(action, itemConfig, player, ref, store);
     }
 
     /**
@@ -186,13 +186,43 @@ public class MenuPage extends InteractiveCustomUIPage<MenuPage.MenuEventData> {
      * - vault:open:1    : Open vault #1 (if HytaleVault registers this)
      * - shop:browse     : Open shop browser
      */
-    private void executeAction(String action, Player player, Ref<EntityStore> ref, Store<EntityStore> store) {
+    private void executeAction(String action, com.joogiebear.hytalemenus.config.MenuItemConfig itemConfig,
+                               Player player, Ref<EntityStore> ref, Store<EntityStore> store) {
         String playerName = playerRef.getUsername();
 
         // Replace placeholders in the action string
         action = MessageUtil.replacePlaceholders(action, playerName);
 
-        // Execute via action registry
+        // Special handling for close-command and close-console — supports configurable delays
+        if (action.startsWith("close-command:") || action.startsWith("close-console:")) {
+            boolean isConsole = action.startsWith("close-console:");
+            String command = action.substring(isConsole ? "close-console:".length() : "close-command:".length());
+            if (command.startsWith("/")) command = command.substring(1);
+            if (isConsole) command = command.replace("%player%", playerName);
+
+            // Resolve delay: item override → global config → 100ms fallback
+            long delayMs = itemConfig != null && itemConfig.hasCloseCommandDelay()
+                ? itemConfig.getCloseCommandDelayMs()
+                : plugin.getConfigManager().getCloseCommandDelayMs();
+
+            player.getPageManager().setPage(ref, store, com.hypixel.hytale.protocol.packets.interface_.Page.None);
+
+            final String finalCommand = command;
+            final boolean finalIsConsole = isConsole;
+            java.util.concurrent.CompletableFuture.delayedExecutor(delayMs, java.util.concurrent.TimeUnit.MILLISECONDS)
+                .execute(() -> {
+                    if (finalIsConsole) {
+                        com.hypixel.hytale.server.core.command.system.CommandManager.get()
+                            .handleCommand(com.hypixel.hytale.server.core.console.ConsoleSender.INSTANCE, finalCommand);
+                    } else {
+                        com.hypixel.hytale.server.core.command.system.CommandManager.get()
+                            .handleCommand(player, finalCommand);
+                    }
+                });
+            return;
+        }
+
+        // Execute via action registry for all other actions
         boolean executed = plugin.getActionRegistry().execute(action, player, playerRef, ref, store);
 
         if (!executed) {

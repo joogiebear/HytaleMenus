@@ -26,6 +26,7 @@ public class ConfigManager {
 
     private String defaultMenu = "main";
     private String noPermissionMessage = "&cYou don't have permission to access this.";
+    private long closeCommandDelayMs = 100;
     private Map<String, MenuConfig> menus = new HashMap<>();
     private Map<String, PageConfig> pages = new HashMap<>();
 
@@ -51,6 +52,7 @@ public class ConfigManager {
                     this.defaultMenu = data.defaultMenu != null ? data.defaultMenu : "main";
                     this.noPermissionMessage = data.noPermissionMessage != null ?
                         data.noPermissionMessage : "&cYou don't have permission to access this.";
+                    this.closeCommandDelayMs = data.closeCommandDelayMs > 0 ? data.closeCommandDelayMs : 100;
                     this.menus = data.menus != null ? data.menus : new HashMap<>();
                     this.pages = data.pages != null ? data.pages : new HashMap<>();
                 }
@@ -309,6 +311,10 @@ public class ConfigManager {
         return noPermissionMessage;
     }
 
+    public long getCloseCommandDelayMs() {
+        return closeCommandDelayMs;
+    }
+
     /**
      * Get a text page by name.
      */
@@ -344,6 +350,7 @@ public class ConfigManager {
         java.util.List<String> _comment; // Documentation comments
         String defaultMenu;
         String noPermissionMessage;
+        long closeCommandDelayMs = 100;
         Map<String, MenuConfig> menus;
         Map<String, PageConfig> pages;
     }

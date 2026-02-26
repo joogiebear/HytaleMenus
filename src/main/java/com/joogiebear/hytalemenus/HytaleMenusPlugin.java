@@ -183,7 +183,7 @@ public class HytaleMenusPlugin extends JavaPlugin {
                 command = command.substring(1);
             }
             command = command.replace("%player%", playerRef.getUsername());
-            CommandManager.get().handleConsoleCommand(command);
+            CommandManager.get().handleCommand(com.hypixel.hytale.server.core.console.ConsoleSender.INSTANCE, command);
         });
 
         // close-console - Close the menu first, then run a command as console
@@ -198,7 +198,8 @@ public class HytaleMenusPlugin extends JavaPlugin {
             player.getPageManager().setPage(ref, store, Page.None);
             final String finalCommand = command;
             java.util.concurrent.CompletableFuture.delayedExecutor(50, java.util.concurrent.TimeUnit.MILLISECONDS)
-                .execute(() -> CommandManager.get().handleConsoleCommand(finalCommand));
+                .execute(() -> CommandManager.get().handleCommand(
+                    com.hypixel.hytale.server.core.console.ConsoleSender.INSTANCE, finalCommand));
         });
 
         LOGGER.info("Registered built-in actions: close, menu, page, message, command, close-command, console, close-console");

@@ -13,6 +13,7 @@ public class MenuItemConfig {
     private String action;
     private String permission;
     private String noPermission = "deny"; // "deny" or "hide"
+    private Integer closeCommandDelayMs; // null = use global default
 
     public MenuItemConfig() {}
 
@@ -102,5 +103,17 @@ public class MenuItemConfig {
 
     public void setNoPermission(String noPermission) {
         this.noPermission = noPermission;
+    }
+
+    public Integer getCloseCommandDelayMs() {
+        return closeCommandDelayMs;
+    }
+
+    public void setCloseCommandDelayMs(Integer closeCommandDelayMs) {
+        this.closeCommandDelayMs = closeCommandDelayMs;
+    }
+
+    public boolean hasCloseCommandDelay() {
+        return closeCommandDelayMs != null;
     }
 }
